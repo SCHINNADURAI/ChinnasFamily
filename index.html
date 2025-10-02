@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kousalya & Baby Countdown 💕</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background: #fff5f7;
+      color: #333;
+    }
+    header img {
+      width: 90%;
+      max-width: 480px;
+      border-radius: 15px;
+      margin: 20px auto;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+    h1 {
+      font-size: 2rem;
+      margin: 10px 0;
+      color: #d6336c;
+    }
+    h2 {
+      font-size: 1.3rem;
+      margin: 5px 0 20px;
+      color: #6a1b9a;
+    }
+    #countdown {
+      font-size: 1.5rem;
+      margin: 20px 0;
+      font-weight: bold;
+      color: #ff4081;
+    }
+    .map a {
+      display: inline-block;
+      margin: 15px;
+      padding: 12px 20px;
+      background: #ff7043;
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+    .map a:hover {
+      background: #e64a19;
+    }
+    .contact a {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 1rem;
+      text-decoration: none;
+      color: white;
+    }
+    .call { background: #4CAF50; }
+    .whatsapp { background: #25D366; }
+    footer {
+      margin-top: 30px;
+      padding: 15px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Poster -->
+  <header>
+   <h1>💖 Waiting for our Little One 💖</h1>
+    <h2>With love, Chinna & Kousi</h2>
+  </header>
+
+  <!-- Countdown -->
+  <div id="countdown">⏳ Loading...</div>
+
+  <!-- Contact -->
+  <div class="contact">
+    <a class="call" href="tel:8939470063"> 📞 Call Us for Wish</a>
+    <a class="whatsapp" href="https://wa.me/8939470063?text=Hello!%20Wishing%20you%20all%20the%20best."> 💬 WhatsApp</a>
+  </div>
+
+  <!-- Optional Music (change file if you want a song) -->
+  <!--
+  <audio autoplay loop>
+    <source src="song.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+  -->
+
+  <footer>
+    ❤️ Made with love for Kousalya & our Baby ❤️
+  </footer>
+
+  <script>
+    // Countdown Timer
+    const countdown = document.getElementById("countdown");
+    const eventDate = new Date("Feb 15, 2026 10:00:00").getTime(); // change date here
+
+    const timer = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+
+      if (distance < 0) {
+        clearInterval(timer);
+        countdown.innerHTML = "🎉 Baby has arrived! 💕";
+      } else {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        countdown.innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>
