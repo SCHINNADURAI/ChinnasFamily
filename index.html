@@ -1,113 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kousalya & Baby Countdown 💕</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      background: #fff5f7;
-      color: #333;
-    }
-    header img {
-      width: 90%;
-      max-width: 480px;
-      border-radius: 15px;
-      margin: 20px auto;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-    }
-    h1 {
-      font-size: 2rem;
-      margin: 10px 0;
-      color: #d6336c;
-    }
-    h2 {
-      font-size: 1.3rem;
-      margin: 5px 0 20px;
-      color: #6a1b9a;
-    }
-    #countdown {
-      font-size: 1.5rem;
-      margin: 20px 0;
-      font-weight: bold;
-      color: #ff4081;
-    }
-    .map a {
-      display: inline-block;
-      margin: 15px;
-      padding: 12px 20px;
-      background: #ff7043;
-      color: white;
-      border-radius: 10px;
-      text-decoration: none;
-      font-size: 1rem;
-    }
-    .map a:hover {
-      background: #e64a19;
-    }
-    .contact a {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 20px;
-      border-radius: 10px;
-      font-size: 1rem;
-      text-decoration: none;
-      color: white;
-    }
-    .call { background: #4CAF50; }
-    .whatsapp { background: #25D366; }
-    footer {
-      margin-top: 30px;
-      padding: 15px;
-      font-size: 0.9rem;
-      color: #777;
-    }
-  </style>
-</head>
-<body>
+<body style="font-family: Arial, sans-serif; margin:0; padding:0; text-align:center; color:#333; 
+            background: #fff5f7; position: relative; min-height:100vh; overflow: hidden;">
 
-  <!-- Poster -->
-  <header>
-   <h1>💖 Waiting for our Little One 💖</h1>
-    <h2>With love, Chinnaa & Kousi</h2>
+  <!-- Floating Hearts and Flowers Container -->
+  <div class="floating-container"></div>
+
+  <!-- Content -->
+  <header style="position:relative; z-index:1; margin-top:20px;">
+    <h1 style="font-size:2rem; color:#d6336c;">💖 Waiting for our Little One 💖</h1>
+    <h2 style="font-size:1.3rem; color:#6a1b9a;">With love, Chinnaa & Kousi</h2>
   </header>
 
-  <!-- Countdown -->
-  <div id="countdown">⏳ Loading...</div>
+  <div id="countdown" style="position:relative; z-index:1; font-size:1.5rem; margin:20px 0; font-weight:bold; color:#ff4081;">⏳ Loading...</div>
 
-  <!-- Contact -->
-  <div class="contact">
-    <a class="call" href="tel:8939470063"> 📞 Call Us for Wish</a>
-    <a class="whatsapp" href="https://wa.me/8939470063?text=Hello!%20Wishing%20you%20all%20the%20best."> 💬 WhatsApp</a>
+  <div class="contact" style="position:relative; z-index:1;">
+    <a class="call" href="tel:8939470063" style="display:inline-block;margin:10px;padding:12px 20px;border-radius:10px;font-size:1rem;text-decoration:none;color:white;background:#4CAF50;">📞 Call Us for Wish</a>
+    <a class="whatsapp" href="https://wa.me/8939470063?text=Hello!%20Wishing%20you%20all%20the%20best." style="display:inline-block;margin:10px;padding:12px 20px;border-radius:10px;font-size:1rem;text-decoration:none;color:white;background:#25D366;">💬 WhatsApp</a>
   </div>
 
-  <!-- Optional Music (change file if you want a song) -->
-  <!--
-  <audio autoplay loop>
-    <source src="song.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
-  -->
-
-  <footer>
+  <footer style="position:relative; z-index:1; margin-top:30px; padding:15px; font-size:0.9rem; color:#777;">
     ❤️ Made with love for Kousalya & our Baby ❤️
   </footer>
 
-  <script>
-    // Countdown Timer
-    const countdown = document.getElementById("countdown");
-    const eventDate = new Date("Feb 15, 2026 10:00:00").getTime(); // change date here
+  <!-- Floating Hearts & Flowers CSS -->
+  <style>
+    .floating-container {
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      pointer-events:none;
+      z-index:0;
+      overflow:hidden;
+    }
+    .floating {
+      position: absolute;
+      font-size: 1.2rem;
+      opacity: 0.8;
+      animation-name: floatUp;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity:0;
+      }
+      10% { opacity:0.8; }
+      100% {
+        transform: translateY(-10vh) translateX(var(--x, 0px)) rotate(360deg);
+        opacity:0;
+      }
+    }
+  </style>
 
-    const timer = setInterval(function() {
+  <!-- Floating Hearts & Flowers JS -->
+  <script>
+    const container = document.querySelector('.floating-container');
+    const emojis = ['❤️','💖','💜','💕','💗','🌸','🌺','🌷','💐','🌼'];
+
+    function createFloating() {
+      const emoji = document.createElement('span');
+      emoji.classList.add('floating');
+      emoji.style.left = Math.random() * 100 + 'vw';
+      emoji.style.fontSize = (12 + Math.random() * 24) + 'px';
+      emoji.style.animationDuration = (6 + Math.random() * 6) + 's';
+      emoji.style.setProperty('--x', (Math.random() * 50 - 25) + 'px'); // random X offset
+      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      container.appendChild(emoji);
+
+      // Remove emoji after animation ends
+      setTimeout(() => emoji.remove(), (6 + Math.random() * 6) * 1000);
+    }
+
+    // Continuously create floating elements
+    setInterval(createFloating, 400);
+  </script>
+
+  <!-- Countdown Script -->
+  <script>
+    const countdown = document.getElementById("countdown");
+    const eventDate = new Date("Feb 15, 2026 10:00:00").getTime(); 
+
+    setInterval(function() {
       const now = new Date().getTime();
       const distance = eventDate - now;
 
       if (distance < 0) {
-        clearInterval(timer);
         countdown.innerHTML = "🎉 Baby has arrived! 💕";
       } else {
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -115,10 +94,8 @@
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        countdown.innerHTML = `⏳ ${days}days ${hours}hours ${minutes}minutes ${seconds}s`;
+        countdown.innerHTML = `⏳ ${days} days ${hours} hours ${minutes} minutes ${seconds}s`;
       }
     }, 1000);
   </script>
-
 </body>
-</html>
