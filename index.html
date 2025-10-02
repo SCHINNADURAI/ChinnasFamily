@@ -16,46 +16,6 @@
       overflow: hidden;
       position: relative;
     }
-    header h1 {
-      font-size: 2rem;
-      margin: 10px 0;
-      color: #d6336c;
-    }
-    header h2 {
-      font-size: 1.3rem;
-      margin: 5px 0 20px;
-      color: #6a1b9a;
-    }
-    #countdown {
-      font-size: 1.5rem;
-      margin: 20px 0;
-      font-weight: bold;
-      color: #ff4081;
-      position: relative;
-      z-index: 1;
-    }
-    .contact a {
-      display: inline-block;
-      margin: 10px;
-      padding: 14px 22px;
-      border-radius: 12px;
-      font-size: 1.2rem;
-      text-decoration: none;
-      color: white;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-      position: relative;
-      z-index: 1;
-    }
-    .call { background: #4CAF50; }
-    .whatsapp { background: #25D366; }
-    footer {
-      margin-top: 30px;
-      padding: 15px;
-      font-size: 0.9rem;
-      color: #777;
-      position: relative;
-      z-index: 1;
-    }
 
     /* Floating hearts & flowers */
     .floating-container {
@@ -86,26 +46,80 @@
         opacity:0;
       }
     }
+
+    /* Centered card */
+    .card {
+      position: relative;
+      z-index: 1;
+      max-width: 90%;
+      margin: 40px auto;
+      padding: 25px 20px;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      backdrop-filter: blur(5px);
+    }
+
+    .card h1 {
+      font-size: 2rem;
+      margin: 10px 0;
+      color: #d6336c;
+    }
+    .card h2 {
+      font-size: 1.3rem;
+      margin: 5px 0 20px;
+      color: #6a1b9a;
+    }
+    #countdown {
+      font-size: 1.5rem;
+      margin: 20px 0;
+      font-weight: bold;
+      color: #ff4081;
+    }
+
+    .contact a {
+      display: inline-block;
+      margin: 10px;
+      padding: 14px 22px;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      text-decoration: none;
+      color: white;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+    .call { background: #4CAF50; }
+    .whatsapp { background: #25D366; }
+
+    footer {
+      margin-top: 30px;
+      padding: 15px;
+      font-size: 0.9rem;
+      color: #777;
+      position: relative;
+      z-index: 1;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Floating Hearts & Flowers Container -->
+  <!-- Floating Hearts & Flowers -->
   <div class="floating-container"></div>
 
-  <!-- Poster -->
-  <header>
-    <h1>💖 Waiting for our Little One 💖</h1>
-    <h2>With love, Chinnaa & Kousi</h2>
-  </header>
+  <!-- Card with Content -->
+  <div class="card">
+    <header>
+      <h1>💖 Waiting for our Little One 💖</h1>
+      <h2>With love, Chinnaa & Kousi</h2>
+    </header>
 
-  <!-- Countdown -->
-  <div id="countdown">⏳ Loading...</div>
+    <!-- Countdown -->
+    <div id="countdown">⏳ Loading...</div>
 
-  <!-- Contact -->
-  <div class="contact">
-    <a class="call" href="tel:8939470063">📞 Call Us for Wish</a>
-    <a class="whatsapp" href="https://wa.me/8939470063?text=Hello!%20Wishing%20you%20all%20the%20best.">💬 WhatsApp</a>
+    <!-- Contact -->
+    <div class="contact">
+      <a class="call" href="tel:8939470063">📞 Call Us for Wish</a>
+      <a class="whatsapp" href="https://wa.me/8939470063?text=Hello!%20Wishing%20you%20all%20the%20best.">💬 WhatsApp</a>
+    </div>
   </div>
 
   <footer>
@@ -131,7 +145,7 @@
 
     setInterval(createFloating, 400);
 
-    // Tap interaction for mobile
+    // Tap effect for mobile
     document.addEventListener('click', function(e) {
       const emoji = document.createElement('span');
       emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
@@ -155,7 +169,7 @@
   <!-- Countdown Script -->
   <script>
     const countdown = document.getElementById("countdown");
-    const eventDate = new Date("Feb 15, 2026 10:00:00").getTime(); 
+    const eventDate = new Date("Feb 15, 2026 10:00:00").getTime();
 
     setInterval(function() {
       const now = new Date().getTime();
@@ -170,7 +184,7 @@
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         countdown.innerHTML = `⏳ ${days} days ${hours} hours ${minutes} minutes ${seconds}s`;
-        countdown.style.color = `hsl(${Math.random()*360}, 70%, 60%)`; // color change
+        countdown.style.color = `hsl(${Math.random()*360}, 70%, 60%)`;
       }
     }, 1000);
   </script>
