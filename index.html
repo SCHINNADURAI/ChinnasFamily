@@ -1,28 +1,63 @@
-<body style="font-family: Arial, sans-serif; margin:0; padding:0; text-align:center; color:#333; 
-            background: #fff5f7; position: relative; min-height:100vh; overflow: hidden;">
-
-  <!-- Floating Hearts and Flowers Container -->
-  <div class="floating-container"></div>
-
-  <!-- Content -->
-  <header style="position:relative; z-index:1; margin-top:20px;">
-    <h1 style="font-size:2rem; color:#d6336c;">💖 Waiting for our Little One 💖</h1>
-    <h2 style="font-size:1.3rem; color:#6a1b9a;">With love, Chinnaa & Kousi</h2>
-  </header>
-
-  <div id="countdown" style="position:relative; z-index:1; font-size:1.5rem; margin:20px 0; font-weight:bold; color:#ff4081;">⏳ Loading...</div>
-
-  <div class="contact" style="position:relative; z-index:1;">
-    <a class="call" href="tel:8939470063" style="display:inline-block;margin:10px;padding:12px 20px;border-radius:10px;font-size:1rem;text-decoration:none;color:white;background:#4CAF50;">📞 Call Us for Wish</a>
-    <a class="whatsapp" href="https://wa.me/8939470063?text=Hello!%20Wishing%20you%20all%20the%20best." style="display:inline-block;margin:10px;padding:12px 20px;border-radius:10px;font-size:1rem;text-decoration:none;color:white;background:#25D366;">💬 WhatsApp</a>
-  </div>
-
-  <footer style="position:relative; z-index:1; margin-top:30px; padding:15px; font-size:0.9rem; color:#777;">
-    ❤️ Made with love for Kousalya & our Baby ❤️
-  </footer>
-
-  <!-- Floating Hearts & Flowers CSS -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kousalya & Baby Countdown 💕</title>
   <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background: linear-gradient(135deg, #fff0f5, #ffe4e1);
+      color: #333;
+      min-height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+    header h1 {
+      font-size: 2rem;
+      margin: 10px 0;
+      color: #d6336c;
+    }
+    header h2 {
+      font-size: 1.3rem;
+      margin: 5px 0 20px;
+      color: #6a1b9a;
+    }
+    #countdown {
+      font-size: 1.5rem;
+      margin: 20px 0;
+      font-weight: bold;
+      color: #ff4081;
+      position: relative;
+      z-index: 1;
+    }
+    .contact a {
+      display: inline-block;
+      margin: 10px;
+      padding: 14px 22px;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      text-decoration: none;
+      color: white;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 1;
+    }
+    .call { background: #4CAF50; }
+    .whatsapp { background: #25D366; }
+    footer {
+      margin-top: 30px;
+      padding: 15px;
+      font-size: 0.9rem;
+      color: #777;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Floating hearts & flowers */
     .floating-container {
       position: absolute;
       top:0;
@@ -35,7 +70,6 @@
     }
     .floating {
       position: absolute;
-      font-size: 1.2rem;
       opacity: 0.8;
       animation-name: floatUp;
       animation-timing-function: linear;
@@ -53,11 +87,35 @@
       }
     }
   </style>
+</head>
+<body>
+
+  <!-- Floating Hearts & Flowers Container -->
+  <div class="floating-container"></div>
+
+  <!-- Poster -->
+  <header>
+    <h1>💖 Waiting for our Little One 💖</h1>
+    <h2>With love, Chinnaa & Kousi</h2>
+  </header>
+
+  <!-- Countdown -->
+  <div id="countdown">⏳ Loading...</div>
+
+  <!-- Contact -->
+  <div class="contact">
+    <a class="call" href="tel:8939470063">📞 Call Us for Wish</a>
+    <a class="whatsapp" href="https://wa.me/8939470063?text=Hello!%20Wishing%20you%20all%20the%20best.">💬 WhatsApp</a>
+  </div>
+
+  <footer>
+    ❤️ Made with love for Kousalya & our Baby ❤️
+  </footer>
 
   <!-- Floating Hearts & Flowers JS -->
   <script>
     const container = document.querySelector('.floating-container');
-    const emojis = ['❤️','💖','💜','💕','💗','🌸','🌺','🌷','💐','🌼'];
+    const emojis = ['❤️','💖','💜','💕','💗','🌸','🌺','🌷','💐','🌼','✨','🌟'];
 
     function createFloating() {
       const emoji = document.createElement('span');
@@ -65,16 +123,33 @@
       emoji.style.left = Math.random() * 100 + 'vw';
       emoji.style.fontSize = (12 + Math.random() * 24) + 'px';
       emoji.style.animationDuration = (6 + Math.random() * 6) + 's';
-      emoji.style.setProperty('--x', (Math.random() * 50 - 25) + 'px'); // random X offset
+      emoji.style.setProperty('--x', (Math.random() * 50 - 25) + 'px');
       emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
       container.appendChild(emoji);
-
-      // Remove emoji after animation ends
       setTimeout(() => emoji.remove(), (6 + Math.random() * 6) * 1000);
     }
 
-    // Continuously create floating elements
     setInterval(createFloating, 400);
+
+    // Tap interaction for mobile
+    document.addEventListener('click', function(e) {
+      const emoji = document.createElement('span');
+      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.position = 'absolute';
+      emoji.style.left = e.clientX + 'px';
+      emoji.style.top = e.clientY + 'px';
+      emoji.style.fontSize = (15 + Math.random() * 25) + 'px';
+      emoji.style.opacity = 0.9;
+      emoji.style.pointerEvents = 'none';
+      emoji.style.transition = 'all 1s ease-out';
+      document.body.appendChild(emoji);
+
+      setTimeout(() => {
+        emoji.style.transform = 'translateY(-50px) scale(1.5)';
+        emoji.style.opacity = 0;
+      }, 50);
+      setTimeout(() => emoji.remove(), 1100);
+    });
   </script>
 
   <!-- Countdown Script -->
@@ -95,7 +170,10 @@
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         countdown.innerHTML = `⏳ ${days} days ${hours} hours ${minutes} minutes ${seconds}s`;
+        countdown.style.color = `hsl(${Math.random()*360}, 70%, 60%)`; // color change
       }
     }, 1000);
   </script>
+
 </body>
+</html>
